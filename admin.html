@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>⚙️ Admin Panel</h1>
+
+<nav>
+    <a href="home.html">Home</a>
+    <a href="index.html">Dashboard</a>
+    <a href="users.html">Users</a>
+    <a href="diet.html">Diet Plans</a>
+    <a href="progress.html">Progress</a>
+</nav>
+
+<div class="card">
+
+    <h2>👤 Users</h2>
+    <button onclick="loadUsers()">Load Users</button>
+    <ul id="userList"></ul>
+
+    <h2>🍽 Diet Plans</h2>
+    <button onclick="loadDiet()">Load Diet</button>
+    <ul id="dietList"></ul>
+
+    <h2>📊 Progress</h2>
+    <button onclick="loadProgress()">Load Progress</button>
+    <ul id="progressList"></ul>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

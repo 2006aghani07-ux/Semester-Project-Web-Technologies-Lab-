@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="users.html">Users</a>
+    <a href="diet.html">Diet</a>
+    <a href="progress.html">Progress</a>
+    <a href="home.html">Landing</a>
+    <a href="login.html">Login</a>
+    <a href="admin.html">Admin</a>
+    <a href="profile.html">Profile</a>
+</nav>
+
+<div class="auth">
+    <h1>Login</h1>
+
+    <input id="login_email" placeholder="Email">
+    <input id="login_password" type="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <h3>OR</h3>
+
+    <h2>Sign Up</h2>
+    <input id="signup_name" placeholder="Name">
+    <input id="signup_email" placeholder="Email">
+    <input id="signup_password" type="password" placeholder="Password">
+
+    <button onclick="signup()">Sign Up</button>
+</div>
+
+<script>
+function login() {
+    const email = document.getElementById("login_email").value;
+    const pass = document.getElementById("login_password").value;
+
+    if (!email || !pass) return alert("Fill all fields");
+
+    alert("Login Successful ✅ (demo)");
+    window.location.href = "users.html";
+}
+
+function signup() {
+    const name = document.getElementById("signup_name").value;
+
+    if (!name) return alert("Enter name");
+
+    alert("Account Created ✅ (demo)");
+}
+</script>
+
+</body>
+</html>

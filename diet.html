@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Diet Plans</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🍽 Diet Plans</h1>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="users.html">Users</a>
+    <a href="diet.html">Diet</a>
+    <a href="progress.html">Progress</a>
+    <a href="home.html">Landing</a>
+    <a href="login.html">Login</a>
+    <a href="admin.html">Admin</a>
+    <a href="profile.html">Profile</a>
+</nav>
+
+<div style="text-align:center; margin-top:20px;">
+    <input id="dietName" placeholder="Plan Name">
+    <input id="calories" placeholder="Calories">
+    <input id="protein" placeholder="Protein">
+    <input id="carbs" placeholder="Carbs">
+    <input id="fat" placeholder="Fat">
+
+    <button onclick="addDiet()">Add Plan</button>
+    <button onclick="loadDiet()">Load Plans</button>
+</div>
+
+<h2 style="text-align:center;">Diet List</h2>
+<ul id="dietList"></ul>
+
+<script src="app.js"></script>
+
+</body>
+</html>

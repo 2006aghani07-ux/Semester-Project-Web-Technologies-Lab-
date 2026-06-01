@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="loadProfile()">
+
+<nav>
+    <a href="home.html">Home</a>
+    <a href="users.html">Users</a>
+    <a href="profile.html">Profile</a>
+</nav>
+
+<h1>👤 User Profile</h1>
+
+<div class="card" style="width:350px; margin:auto; text-align:center;">
+    <input id="name" placeholder="Name">
+    <input id="email" placeholder="Email">
+    <input id="age" placeholder="Age">
+    <input id="goal" placeholder="Goal">
+    <input id="weight" placeholder="Weight">
+    <input id="height" placeholder="Height">
+
+    <button onclick="loadProfile()">Load Profile</button>
+    <button onclick="updateProfile()">Update Profile</button>
+</div>
+
+<script>
+const API_URL = "http://localhost:5021/api";
+
+let currentUserId = null;
+
+/* =========================
+   LOAD PROFILE
+========================= */
+async function loadProfile() {
+    try {
+        const res = await fetch(`${API_URL}/user`);
+        if (!res.ok) throw new Error(`API error ${res.status}`);
+
+        const users = await res.json();
+        if (!Array.isArray(users) || !users.length) {
+            alert("No user found");
+            return;
+        }
+
+        const user = users[0];
+        const rawId = user.id ?? user._id;
+        currentUserId = typeof rawId === "string"
+            ? rawId
+            : rawId?.$oid ?? rawId?.toString();
+
+        document.getElementById("name").value = user.name || "";
+        document.getElementById("email").value = user.email || "";
+        document.getElementById("age").value = user.age ?? "";
+        document.getElementById("goal").value = user.goal || "";
+        document.getElementById("weight").value = user.weight ?? "";
+        document.getElementById("height").value = user.height ?? "";
+    } catch (err) {
+        alert("Could not load profile: " + err.message);
+    }
+}
+
+/* =========================
+   UPDATE PROFILE
+========================= */
+async function updateProfile() {
+    if (!currentUserId) {
+        alert("Load profile first");
+        return;
+    }
+
+    const id = currentUserId.toString();
+    const updatedUser = {
+        id,
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        age: Number(document.getElementById("age").value),
+        goal: document.getElementById("goal").value,
+        weight: Number(document.getElementById("weight").value),
+        height: Number(document.getElementById("height").value),
+        gender: "Male"
+    };
+
+    try {
+        const res = await fetch(`${API_URL}/user/${encodeURIComponent(id)}`, {
+            method: "PUT",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(updatedUser)
+        });
+
+        if (!res.ok) {
+            const msg = await res.text();
+            throw new Error(msg || `HTTP ${res.status}`);
+        }
+
+        alert("Profile Updated Successfully ✅");
+        loadProfile();
+    } catch (err) {
+        alert("Update Failed ❌ " + err.message);
+    }
+}
+</script>
+
+</body>
+</html>

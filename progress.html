@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Progress</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>📊 Progress Tracker</h1>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="users.html">Users</a>
+    <a href="diet.html">Diet</a>
+    <a href="progress.html">Progress</a>
+    <a href="home.html">Landing</a>
+    <a href="login.html">Login</a>
+    <a href="admin.html">Admin</a>
+    <a href="profile.html">Profile</a>
+</nav>
+
+<div style="text-align:center; margin-top:20px;">
+    <input id="pUser" placeholder="User Name">
+    <input id="pDate" type="date">
+    <input id="pWeight" placeholder="Weight">
+    <input id="pNotes" placeholder="Notes">
+
+    <button onclick="addProgress()">Add</button>
+    <button onclick="loadProgress()">Load</button>
+</div>
+
+<h2 style="text-align:center;">Progress List</h2>
+<ul id="progressList"></ul>
+
+<script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>👤 Users Module</h1>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="users.html">Users</a>
+    <a href="diet.html">Diet</a>
+    <a href="progress.html">Progress</a>
+    <a href="home.html">Landing</a>
+    <a href="login.html">Login</a>
+    <a href="admin.html">Admin</a>
+    <a href="profile.html">Profile</a>
+</nav>
+
+<div style="text-align:center; margin-top:20px;">
+    <input id="userName" placeholder="Name">
+    <input id="userEmail" placeholder="Email">
+
+    <button onclick="addUser()">Add User</button>
+    <button onclick="loadUsers()">Load Users</button>
+</div>
+
+<h2 style="text-align:center;">Users List</h2>
+<ul id="userList"></ul>
+
+<!-- ❌ REMOVE type="module" -->
+<script src="app.js"></script>
+
+</body>
+</html>
